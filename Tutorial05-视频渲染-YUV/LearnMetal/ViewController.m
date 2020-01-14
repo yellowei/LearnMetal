@@ -11,8 +11,13 @@
 #import "LYShaderTypes.h"
 #import "ViewController.h"
 #import "LYAssetReader.h"
+#import "CYFFmpegMetalView.h"
+#import "PlayESView.h"
 
 @interface ViewController () <MTKViewDelegate>
+{
+    NSTimer * timer;
+}
 
 // view
 @property (nonatomic, strong) MTKView *mtkView;
@@ -30,6 +35,10 @@
 @property (nonatomic, strong) id<MTLBuffer> convertMatrix;
 @property (nonatomic, assign) NSUInteger numVertices;
 
+@property (nonatomic, strong) CYFFmpegMetalView * metalView;
+
+@property (nonatomic, strong) PlayESView * esView;
+
 
 @end
 
@@ -37,21 +46,50 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+//    // Do any additional setup after loading the view, typically from a nib.
+//
     
-    // 初始化 MTKView
+    /*
+//    // 初始化 MTKView
     self.mtkView = [[MTKView alloc] initWithFrame:self.view.bounds];
     self.mtkView.device = MTLCreateSystemDefaultDevice(); // 获取默认的device
     self.view = self.mtkView;
     self.mtkView.delegate = self;
     self.viewportSize = (vector_uint2){self.mtkView.drawableSize.width, self.mtkView.drawableSize.height};
-    
+//
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"mov"];
     self.reader = [[LYAssetReader alloc] initWithUrl:url];
-
+//
     CVMetalTextureCacheCreate(NULL, NULL, self.mtkView.device, NULL, &_textureCache); // TextureCache的创建
-    
+//
     [self customInit];
+    */
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"mov"];
+    self.reader = [[LYAssetReader alloc] initWithUrl:url];
+    
+    self.metalView = [[CYFFmpegMetalView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:self.metalView];
+    
+    timer = [NSTimer timerWithTimeInterval:1/60.0 repeats:YES block:^(NSTimer * _Nonnull timer) { //根据视频的fps解码渲染视频
+        [self buffering];  //解码视频并渲染
+    }];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
+     
+    
+//    PlayESView * esView = [[PlayESView alloc] initWithFrame:self.view.bounds];
+//    [self.view addSubview:esView];
+//    self.esView = esView;
+//    [self buffering];
+}
+
+- (void)buffering
+{
+    CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer([self.reader readBuffer]); //
+//    [self.view setNeedsLayout:YES];  //刷新界面防止画面撕裂
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.metalView renderWithPixelBuffer:pixelBuffer];
+    });
 }
 
 - (BOOL)prefersStatusBarHidden {

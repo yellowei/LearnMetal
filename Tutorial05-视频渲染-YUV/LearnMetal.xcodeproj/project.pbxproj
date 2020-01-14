@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC7A698423CC506B00B9494D /* CYFFmpegMetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7A698323CC506B00B9494D /* CYFFmpegMetalView.m */; };
+		BC7A698C23CD7D6700B9494D /* PlayESView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7A698A23CD7D6700B9494D /* PlayESView.m */; };
 		FD68897420DB40C7002F8137 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD68897320DB40C7002F8137 /* AppDelegate.m */; };
 		FD68897720DB40C7002F8137 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD68897620DB40C7002F8137 /* ViewController.m */; };
 		FD68897A20DB40C7002F8137 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD68897820DB40C7002F8137 /* Main.storyboard */; };
@@ -21,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC7A698223CC506B00B9494D /* CYFFmpegMetalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYFFmpegMetalView.h; sourceTree = "<group>"; };
+		BC7A698323CC506B00B9494D /* CYFFmpegMetalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYFFmpegMetalView.m; sourceTree = "<group>"; };
+		BC7A698A23CD7D6700B9494D /* PlayESView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayESView.m; sourceTree = "<group>"; };
+		BC7A698B23CD7D6700B9494D /* PlayESView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayESView.h; sourceTree = "<group>"; };
 		FD68896F20DB40C7002F8137 /* LearnMetal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnMetal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD68897220DB40C7002F8137 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FD68897320DB40C7002F8137 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -81,6 +87,10 @@
 				FD68899120DB4832002F8137 /* shaders.metal */,
 				FD918AE220E0B06700E4ED14 /* LYAssetReader.h */,
 				FD918AE320E0B06700E4ED14 /* LYAssetReader.m */,
+				BC7A698223CC506B00B9494D /* CYFFmpegMetalView.h */,
+				BC7A698323CC506B00B9494D /* CYFFmpegMetalView.m */,
+				BC7A698B23CD7D6700B9494D /* PlayESView.h */,
+				BC7A698A23CD7D6700B9494D /* PlayESView.m */,
 				FD68899320DB4ADD002F8137 /* help */,
 			);
 			path = LearnMetal;
@@ -188,9 +198,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC7A698C23CD7D6700B9494D /* PlayESView.m in Sources */,
 				FD68899220DB4832002F8137 /* shaders.metal in Sources */,
 				FD918AE420E0B06700E4ED14 /* LYAssetReader.m in Sources */,
 				FD68897720DB40C7002F8137 /* ViewController.m in Sources */,
+				BC7A698423CC506B00B9494D /* CYFFmpegMetalView.m in Sources */,
 				FD68898220DB40CA002F8137 /* main.m in Sources */,
 				FD68897420DB40C7002F8137 /* AppDelegate.m in Sources */,
 			);
@@ -333,14 +345,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A478ENRUX2;
+				DEVELOPMENT_TEAM = F9N4PL48HY;
 				INFOPLIST_FILE = "$(SRCROOT)/LearnMetal/help/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = loying.LearnMetal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yellowei.www.LearnMetal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -358,7 +370,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = loying.LearnMetal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yellowei.www.LearnMetal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
